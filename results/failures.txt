@@ -1,0 +1,10 @@
+False negatives (phish predicted legit): 29
+  score=0.13 | Dear customer, A payment of $7.67 is pending. You can manage this in the app settings. https://vg9ys-login.info/aqjv
+  score=0.33 | Notice: Your parcel from BlueFright has an update. You can manage this in the app settings. Immediately. http://tinyurl.com/e5z8d70
+  score=0.25 | ALERT: ParcelGo: your package is waiting. http://tinyurl.com/p7s5e1b Thanks
+  score=0.19 | Your Civic Savings account has a new notice. http://bit.ly/tp99jp
+False positives (legit predicted phish): 24
+  score=0.57 | Hello, BlueFreight could not deliver your package today. Please reply as soon as you can.
+  score=0.61 | Northban: there is a message about your account. Log in to confirm. https://docs.example.com/d/7estf1
+  score=0.52 | Your invoice of $21.12 is ready. Update your payment info. https://docs.example.com/d/k5isac
+  score=0.55 | SwiftPost could not deliver your package today. This is your final notice. https://www.example.com/orders/8777
