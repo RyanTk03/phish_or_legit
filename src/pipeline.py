@@ -13,6 +13,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 
 SEED = 42
@@ -41,7 +42,7 @@ def split(df, test_size=0.25):
 
 
 def make_pipeline(kind="lr", analyzer="word"):
-    """kind: 'nb' | 'lr' | 'nb_cal' (calibrated NB) | 'lr_cal'.  analyzer: 'word' | 'char_wb'."""
+    """kind: 'nb' | 'lr' | 'nb_cal' (calibrated NB) | 'lr_cal' | svc.  analyzer: 'word' | 'char_wb'."""
     if analyzer == "word":
         tfidf = TfidfVectorizer(preprocessor=preprocess, ngram_range=(1, 2), min_df=2, sublinear_tf=True)
     else:
@@ -56,6 +57,8 @@ def make_pipeline(kind="lr", analyzer="word"):
     elif kind == "lr_cal":
         clf = CalibratedClassifierCV(LogisticRegression(max_iter=1000, C=3.0, random_state=SEED),
                                      method="sigmoid", cv=5)
+    elif kind == "svc":
+        clf = SVC(kernel="linear")
     else:
         raise ValueError(kind)
     return Pipeline([("tfidf", tfidf), ("clf", clf)])
